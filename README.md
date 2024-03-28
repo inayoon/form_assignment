@@ -18,7 +18,7 @@
 
 > Frontend: Next.js
 > <br/>
-> Deployment : <a href="https://trial-request-form.vercel.app/history">Vercel</a>
+> Deployment : <a href="https://trial-request-form.vercel.app/">Vercel</a>
 >
 > <br/>
 
