@@ -2,10 +2,9 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function TrialForm() {
   const router = useRouter();
@@ -14,7 +13,6 @@ export default function TrialForm() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({ mode: "Onchange" });
 
   const onSubmit = (data) => {
@@ -23,15 +21,10 @@ export default function TrialForm() {
       streetName: address.label,
     };
     toast.success("Form submitted successfully!");
-    // 이전에 저장된 데이터 가져오기
     const existingData = JSON.parse(localStorage.getItem("formData")) || [];
-
-    // 새로운 데이터를 기존 데이터 배열에 추가
-
     const newData = [...existingData, body];
-
-    // localStorage에 새로운 데이터 저장
     localStorage.setItem("formData", JSON.stringify(newData));
+
     setTimeout(() => {
       router.push("/history");
     }, 3000);
@@ -48,6 +41,7 @@ export default function TrialForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ToastContainer />
+      {/* Name input */}
       <label htmlFor="name">
         Name<span style={{ color: "#ff0000" }}>*</span>
       </label>
@@ -63,6 +57,7 @@ export default function TrialForm() {
         </div>
       )}
 
+      {/* Email input  */}
       <label htmlFor="email">
         Email<span style={{ color: "#ff0000" }}>*</span>
       </label>
@@ -78,6 +73,7 @@ export default function TrialForm() {
         </div>
       )}
 
+      {/* Product name input  */}
       <label htmlFor="productName">
         Product Name<span style={{ color: "#ff0000" }}>*</span>
       </label>
@@ -93,6 +89,7 @@ export default function TrialForm() {
         </div>
       )}
 
+      {/* Product size input  */}
       <label htmlFor="productSize">Product Size</label>
       <input
         className="input_box"
@@ -100,10 +97,11 @@ export default function TrialForm() {
         id="productSize"
         {...register("productSize")}
       />
+
+      {/* Auto-complete address(street) input  */}
       <label>
         Address<span style={{ color: "#ff0000" }}>*</span>
       </label>
-
       <GooglePlacesAutocomplete
         apiOptions={{ language: "en", region: "ca" }}
         selectProps={{
@@ -114,6 +112,7 @@ export default function TrialForm() {
         apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}
       />
 
+      {/* Unit & Postal code input(flex)  */}
       <div className="flex_container" style={{ marginTop: "1rem" }}>
         <div>
           <label htmlFor="unit">Unit</label>
@@ -141,6 +140,8 @@ export default function TrialForm() {
           )}
         </div>
       </div>
+
+      {/* Submit button */}
       <div style={{ textAlign: "center" }}>
         <button className="submit_btn" type="submit">
           SUBMIT

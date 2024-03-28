@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 export default function History() {
   const [formData, setFormData] = useState([]);
-
   useEffect(() => {
     const data = localStorage.getItem("formData");
     if (data) {
@@ -12,9 +11,9 @@ export default function History() {
   }, []);
 
   return (
-    <section style={{ padding: "1.5rem" }}>
+    <section className="history_section">
       <div>
-        <h2 style={{ textAlign: "center" }}>Trial Request History</h2>
+        <h2 className="history_title">Trial Request History</h2>
         <ul className="history_container">
           {formData.map((data, index) => (
             <li className="history_card" key={index}>

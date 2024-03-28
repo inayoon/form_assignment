@@ -8,7 +8,6 @@
 
   }
 
-
 *{
   box-sizing: border-box;
 }
@@ -33,9 +32,10 @@ p{
 }
 label{
   font-size: var(--font-small);
-
 }
 
+
+/* navigation */
 .navbar{
   display:flex;
   gap:2rem;
@@ -43,19 +43,18 @@ label{
 }
 .navbar_items{
   align-self: center;
-  font-size:20px;
+  font-size:var(--font-regular);
 }
 .navbar_selected{
   font-weight: 600;
 }
 .navbar_items:hover, .navbar_items:focus, .navbar_selected{
-  margin-top: 2px;
+  margin-top: 0.3rem;
   background: linear-gradient(to top, rgb(255, 180, 192) 40%, transparent 30%);
 }
-
 .navbar_hamburger {
   align-self: center;
-  font-size:20px;
+  font-size:var(--font-regular);
   display: none; 
   cursor: pointer;
 }
@@ -67,11 +66,13 @@ label{
   margin-top: 1%;
   border: 1px solid rgba(211, 211, 211, 0.3);
 }
+
+
+/* Left-side information part */
 .flex_container{
   display:flex;
   gap: 1rem;
 }
-
 .main_container{
   display: flex;
   direction: column;
@@ -100,6 +101,8 @@ label{
   font-weight: 500;
 }
 
+
+/* Right-side input boxes part */
 .input_box {
   width: 100%;
   padding: 1rem;
@@ -115,7 +118,6 @@ label{
   font-size:var(--font-micro);
   margin-bottom: 1rem;
 }
-
 .submit_btn{
   all: unset;
   background-color: rgb(227, 149, 162);
@@ -130,6 +132,15 @@ label{
 .submit_btn:hover{
   background-color: rgb(203, 42, 103);
   color:white;
+}
+
+
+/* history page */
+.history_section{
+  padding: 1.5rem;
+}
+.history_title{
+  text-align: center;
 }
 .history_container{
   display: flex;
@@ -188,7 +199,7 @@ label{
     margin-bottom:0.5rem;
   }
   .navbar_hamburger {
-    display: block; /* 초기에는 햄버거 아이콘을 숨김 */
+    display: block; 
     cursor: pointer;
   }
 }
